@@ -32,15 +32,23 @@ dsh --version
 拿到构建好的 `.tgz`。如果是从源码构建的，先构建：
 
 ```sh
-cd ~/Downloads/dsh-web-control/host && npm install
-cd ~/Downloads/dsh-web-control && node tools/build.mjs
-node tools/pack-bundle.mjs
+git clone https://github.com/weichengwu/dsh-web-control
+cd dsh-web-control
+npm install --prefix host
+npm run build
+npm run pack
 ```
 
 产物在 `build/dsh-web-control.tgz`。安装：
 
 ```sh
-dsh plugin --profile desktop add file:~//Downloads/dsh-web-control/build/dsh-web-control.tgz
+dsh plugin --profile desktop add file:$PWD/build/dsh-web-control.tgz
+```
+
+也可以直接从 GitHub 装，跳过构建：
+
+```sh
+dsh plugin --profile desktop add github:weichengwu/dsh-web-control
 ```
 
 装完**重启 DSH**：完全退出 App（`Cmd+Q`），再重新打开。已经在运行的那个 DSH 不会自动加载新插件。

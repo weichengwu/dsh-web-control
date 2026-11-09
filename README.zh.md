@@ -23,23 +23,31 @@
 
 ## 安装
 
-需要一个已经构建好的插件包（`.tgz`）。假设它在 `~/Downloads/dsh-web-control/build/dsh-web-control.tgz`：
+### 方式一：直接从 GitHub 装（推荐）
 
 ```sh
-dsh plugin --profile desktop add file:~//Downloads/dsh-web-control/build/dsh-web-control.tgz
+dsh plugin --profile desktop add github:weichengwu/dsh-web-control
 ```
 
-> **路径必须带上，建议用 `file:` 加绝对路径。** 只写包名 `dsh-web-control` 会让 pnpm 把它当成 npm 上的包去下载，报
-> `ERR_PNPM_FETCH_404 GET https://registry.npmjs.org/dsh-web-control.tgz: Not Found`。这个包没有发布到 npm，只能从本地 `.tgz` 装。
+装完**重启 DSH**，在 **设置 → Web 访问** 能看到面板。
+
+### 方式二：装预构建包
+
+从 [Releases](https://github.com/weichengwu/dsh-web-control/releases) 下载 `dsh-web-control-0.1.0.tgz`，然后：
+
+```sh
+dsh plugin --profile desktop add file:/绝对路径/dsh-web-control-0.1.0.tgz
+```
 
 `PATH` 里没有 `dsh` 时，用 App 自带的那一个：
 
 ```sh
 "/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh" \
-  plugin --profile desktop add file:~//Downloads/dsh-web-control/build/dsh-web-control.tgz
+  plugin --profile desktop add file:/绝对路径/dsh-web-control-0.1.0.tgz
 ```
 
-装完**重启 DSH**。重启后在 **设置 → Web 访问** 能看到面板。
+> **`.tgz` 路径必须带上，建议用 `file:` 加绝对路径。** 只写包名 `dsh-web-control` 会让 pnpm 把它当成 npm 上的包去下载，报
+> `ERR_PNPM_FETCH_404 GET https://registry.npmjs.org/dsh-web-control.tgz: Not Found`。这个包没有发布到 npm，只能从 GitHub 或本地 `.tgz` 装。
 
 ### 如果命令以 exit 1 结束
 

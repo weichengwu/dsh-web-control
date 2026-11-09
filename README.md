@@ -24,11 +24,22 @@ dsh web: http://<IP>:<PORT>/?token=<TOKEN>
 
 ## Install
 
+Straight from GitHub:
+
 ```sh
-dsh plugin --profile desktop add file:~//Downloads/dsh-web-control/build/dsh-web-control.tgz
+dsh plugin --profile desktop add github:weichengwu/dsh-web-control
+```
+
+Or install the prebuilt tarball from [Releases](https://github.com/weichengwu/dsh-web-control/releases):
+
+```sh
+dsh plugin --profile desktop add file:/absolute/path/to/dsh-web-control-0.1.0.tgz
 ```
 
 Then quit and reopen DSH. macOS walkthrough: [docs/SETUP-MAC.zh.md](docs/SETUP-MAC.zh.md).
+
+> Pass a path, not a bare name — `dsh plugin add dsh-web-control` makes pnpm look for an npm package
+> and fails with `ERR_PNPM_FETCH_404`. This plugin is not published to npm.
 
 ## Tailscale vs LAN
 
