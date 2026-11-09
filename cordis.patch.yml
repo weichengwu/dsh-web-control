@@ -1,0 +1,5 @@
+# dsh-web-control — DSH applies this before the profile's own cordis.patch.yml.
+- insert:
+    - id: dsh-web-control
+      name: ./dist/plugin.js
+      config: {}

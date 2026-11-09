@@ -1,0 +1,52 @@
+{
+  "name": "dsh-web-control",
+  "version": "0.1.0",
+  "description": "Manage a LAN or Tailscale reachable dsh web instance from inside DSH: pick the bind address, start, stop, restart, and read the token URL.",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weichengwu/dsh-web-control.git"
+  },
+  "homepage": "https://github.com/weichengwu/dsh-web-control#readme",
+  "bugs": {
+    "url": "https://github.com/weichengwu/dsh-web-control/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "tailscale",
+    "lan",
+    "remote",
+    "deepseek-harness"
+  ],
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "exports": {
+    ".": "./dist/plugin.js",
+    "./client": "./dist/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "host/node_modules/.bin/tsc -p host/tsconfig.json && node tools/build.mjs",
+    "pack": "node tools/pack-bundle.mjs",
+    "test": "node test/unit.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": []
+    }
+  }
+}
